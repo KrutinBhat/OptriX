@@ -1,0 +1,1 @@
+export default function CounterEvidence({ opportunity }) { return <div className="evidence-columns"><div className="evidence-column support"><h4><i/> Supporting evidence</h4>{opportunity.supporting.map((s,i)=><p key={i}>{s}</p>)}</div><div className="evidence-column counter"><h4><i/> Counter-evidence</h4>{opportunity.counter.map((s,i)=><p key={i}>{s}</p>)}</div></div>; }
