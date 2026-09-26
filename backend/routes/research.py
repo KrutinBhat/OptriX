@@ -7,6 +7,7 @@ from typing import Any
 from fastapi import APIRouter
 
 from schemas.models import ResearchRequest
+from analysis import analyze_market
 from serpapi.client import SerpApiError
 from serpapi.jobs import collect_google_jobs
 from serpapi.maps import collect_google_maps
@@ -42,15 +43,35 @@ async def research(request: ResearchRequest) -> dict[str, Any]:
         )
     )
     sources = dict(collected)
-    total_results = sum(len(source_data.get("results", [])) for source_data in sources.values())
+    total_results = sum(
+        len(source_data.get("results", []))
+        for source_data in sources.values()
+    )
+
+    # Map SerpApi source names to the names expected by the intelligence engine.
+    analysis_data = {
+        "search": sources.get("google_search", {}),
+        "news": sources.get("google_news", {}),
+        "jobs": sources.get("google_jobs", {}),
+        "maps": sources.get("google_maps", {}),
+        "shopping": sources.get("google_shopping", {}),
+        "scholar": sources.get("google_scholar", {}),
+    }
+
+    # Run the core market intelligence pipeline.
+    intelligence = analyze_market(analysis_data)
 
     return {
         "topic": topic,
         "location": location,
         **sources,
-        "research_stats": {"total_queries": 7, "total_results": total_results},
+        "signals": intelligence["signals"],
+        "opportunities": intelligence["opportunities"],
+        "research_stats": {
+            "total_queries": 7,
+            "total_results": total_results,
+        },
     }
-
 
 async def _collect_source(
     source: str,
