@@ -11,10 +11,10 @@ import logging
 from collections.abc import Mapping
 from typing import Any
 
-from backend.ai.counter_evidence import CounterEvidenceEngine
-from backend.ai.entity_resolution import EntityResolver
-from backend.ai.evidence_engine import EvidenceEngine
-from backend.ai.extractor import EvidenceExtractor
+from ai.counter_evidence import CounterEvidenceEngine
+from ai.entity_resolution import EntityResolver
+from ai.evidence_engine import EvidenceEngine
+from ai.extractor import EvidenceExtractor
 
 from .opportunity_engine import OpportunityEngine
 from .signal_engine import SignalEngine
@@ -128,22 +128,21 @@ def analyze_market(
     # 4. EXISTING SIGNAL ENGINE
     # ---------------------------------------------------------
 
-    signal_engine = SignalEngine()
+    signal_engine = SignalEngine(research_data) 
 
-    signals = signal_engine.analyze(
-        research_data
-    )
+    signals = signal_engine.analyze()
+    
 
     # ---------------------------------------------------------
     # 5. EXISTING OPPORTUNITY ENGINE
     # ---------------------------------------------------------
 
-    opportunity_engine = OpportunityEngine()
+    opportunity_engine = OpportunityEngine(
+    research_data,
+    evidence=evidence_ledger,
+)
 
-    opportunities = opportunity_engine.analyze(
-        research_data=research_data,
-        signals=signals,
-    )
+    opportunities = opportunity_engine.generate(signals)
 
     # ---------------------------------------------------------
     # 6. COUNTER-EVIDENCE
