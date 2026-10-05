@@ -141,7 +141,7 @@ useEffect(() => {
           </span>
 
           <span>
-            OptiX
+            OptriX
             <small>MARKET INTELLIGENCE</small>
           </span>
         </a>
@@ -241,7 +241,7 @@ useEffect(() => {
 
       <footer className="footer">
         <span>
-          OPTIX <b>·</b> MARKET SIGNALS, WITH SOURCES
+          OPTRIX <b>·</b> MARKET SIGNALS, WITH SOURCES
         </span>
 
         <span>
