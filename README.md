@@ -1,4 +1,4 @@
-OptriX — Evidence-Driven Market Intelligence
+# OptriX — Evidence-Driven Market Intelligence
 
 Discover market opportunities. Connect the evidence. Make better-informed decisions.
 
@@ -6,7 +6,7 @@ OptriX is a multi-source market intelligence platform that transforms web resear
 
 Instead of relying on isolated search results, OptriX brings together information from web search, news, jobs, maps, shopping, and academic research into a unified research workflow.
 
-«Core idea: Move from scattered market information to structured, evidence-backed opportunity discovery.»
+> **Core idea:** Move from scattered market information to structured, evidence-backed opportunity discovery.
 
 <p align="center">
   <a href="https://optrix-1.onrender.com/"><strong>Live Application</strong></a>
@@ -14,32 +14,29 @@ Instead of relying on isolated search results, OptriX brings together informatio
   <a href="https://optrix-2.onrender.com/"><strong>Live Deployment</strong></a>
   &nbsp; • &nbsp;
   <a href="https://github.com/KrutinBhat/OptriX"><strong>Source Code</strong></a>
-</p>---
-
-Table of Contents
-
-- "Overview" (#overview)
-- "The Problem" (#the-problem)
-- "Our Approach" (#our-approach)
-- "Key Features" (#key-features)
-- "How It Works" (#how-it-works)
-- "System Architecture" (#system-architecture)
-- "Market Signal Framework" (#market-signal-framework)
-- "Technology Stack" (#technology-stack)
-- "Project Structure" (#project-structure)
-- "Getting Started" (#getting-started)
-- "Environment Configuration" (#environment-configuration)
-- "API Reference" (#api-reference)
-- "Deployment" (#deployment)
-- "Security and Reliability" (#security-and-reliability)
-- "Current Limitations" (#current-limitations)
-- "Roadmap" (#roadmap)
-- "Contributing" (#contributing)
-- "Acknowledgements" (#acknowledgements)
+</p>
 
 ---
 
-Overview
+## Table of Contents
+
+- [Platform Overview](#platform-overview)
+- [The Market Research Challenge](#the-market-research-challenge)
+- [Our Solution](#our-solution)
+- [Platform Capabilities](#platform-capabilities)
+- [Research Workflow](#research-workflow)
+- [Technical Architecture](#technical-architecture)
+- [Market Signals & Opportunity Scoring](#market-signals--opportunity-scoring)
+- [Technology & Tools](#technology--tools)
+- [Codebase Structure](#codebase-structure)
+- [Local Setup & Installation](#local-setup--installation)
+- [Environment Setup](#environment-setup)
+- [API Endpoints & Usage](#api-endpoints--usage)
+- [Live Deployment & Configuration](#live-deployment--configuration)
+
+---
+
+## Platform Overview
 
 Market research frequently involves switching between search engines, news articles, job listings, supplier directories, shopping results, and academic publications. The information is fragmented, difficult to compare, and often disconnected from the conclusions drawn from it.
 
@@ -49,7 +46,7 @@ A user provides a market topic and geographic location. The platform collects in
 
 The resulting workspace is designed to support market exploration, evidence inspection, opportunity comparison, and transparent review of the research process.
 
-Who is OptriX for?
+### Who is OptriX for?
 
 - Entrepreneurs: Explore potential market gaps and business ideas.
 - Product teams: Investigate industries, technologies, and commercial activity.
@@ -61,7 +58,7 @@ OptriX is a research-support platform, not a substitute for primary market resea
 
 ---
 
-The Problem
+## The Market Research Challenge
 
 Traditional market research can require manually collecting information from multiple disconnected sources.
 
@@ -75,7 +72,7 @@ This creates several challenges:
 
 OptriX brings these research activities into one structured workflow.
 
-Our Approach
+## Our Solution
 
 OptriX combines three core layers:
 
@@ -88,9 +85,9 @@ The result is a research environment where users can explore both what an opport
 
 ---
 
-Key Features
+## Platform Capabilities
 
-1. Multi-Source Market Research
+### 1. Multi-Source Market Research
 
 OptriX uses SerpApi to retrieve structured information from six Google search verticals.
 
@@ -104,7 +101,7 @@ Google Scholar| Academic publications and research activity
 
 The collected records provide different perspectives on a market rather than relying on one source alone.
 
-2. Market Signal Analysis
+### 2. Market Signal Analysis
 
 OptriX evaluates six analytical dimensions:
 
@@ -117,7 +114,7 @@ OptriX evaluates six analytical dimensions:
 
 These signals are normalized into a structured representation that can be used by the opportunity-generation pipeline.
 
-3. Opportunity Discovery and Scoring
+### 3. Opportunity Discovery and Scoring
 
 The opportunity engine evaluates market signals against predefined opportunity patterns.
 
@@ -132,7 +129,7 @@ Each candidate receives a score on a 0–100 scale, along with information about
 
 The score is a heuristic research indicator based on configured signal weights and available data. It is not a statistically validated probability of success.
 
-4. Evidence Extraction and Organization
+### 4. Evidence Extraction and Organization
 
 OptriX includes an evidence-intelligence layer designed to turn normalized research results into structured evidence records.
 
@@ -147,13 +144,13 @@ The evidence workflow supports:
 
 This provides a foundation for investigating how the platform's research findings relate to the underlying collected records.
 
-5. Entity Resolution and Exploration
+### 5. Entity Resolution and Exploration
 
 Entity resolution helps organize information about organizations, products, locations, and other entities surfaced during research.
 
 The frontend provides an Entity Explorer for navigating discovered entities and examining the resulting market landscape.
 
-6. Supporting and Counter-Evidence
+### 6. Supporting and Counter-Evidence
 
 OptriX is designed to encourage balanced research rather than presenting every opportunity as an established conclusion.
 
@@ -161,19 +158,19 @@ Supporting evidence provides relevant information associated with a hypothesis. 
 
 Counter-evidence findings are research caveats, not definitive proof that an opportunity will fail.
 
-7. Evidence Graph
+### 7. Evidence Graph
 
 The evidence graph provides a visual way to explore relationships between the researched market and source categories.
 
 Users can navigate the relationship between a market topic and its associated Search, News, Jobs, Maps, Shopping, and Scholar records.
 
-8. Research Run Visibility
+### 8. Research Run Visibility
 
 The research workspace includes a research summary showing key collection statistics, such as executed queries and returned results.
 
 The purpose is to make the collection process easier to inspect and understand.
 
-9. Market Intelligence Workspace
+### 9. Market Intelligence Workspace
 
 The React frontend brings the research workflow together through a user interface containing:
 
@@ -189,45 +186,45 @@ The presentation layer is designed to make research easier to navigate without r
 
 ---
 
-How It Works
+## Research Workflow
 
 A typical research run follows this workflow:
 
-Step 1 — Define the research scope
+### Step 1 — Define the research scope
 
 Enter a market topic and geographic location, such as "Drone Components" and "India".
 
-Step 2 — Collect information
+### Step 2 — Collect information
 
 The backend executes configured queries through SerpApi collectors for Search, News, Jobs, Maps, Shopping, and Scholar.
 
-Step 3 — Normalize research data
+### Step 3 — Normalize research data
 
 The returned source data is mapped into a common structure for downstream analysis. Collection failures are handled at the individual query/source level so that one failed request does not automatically discard successful results from other sources.
 
-Step 4 — Extract and organize evidence
+### Step 4 — Extract and organize evidence
 
 The analysis pipeline extracts evidence records, resolves entities, and builds an evidence ledger.
 
-Step 5 — Derive market signals
+### Step 5 — Derive market signals
 
 The Signal Engine evaluates the collected records across the configured market dimensions.
 
-Step 6 — Generate opportunity hypotheses
+### Step 6 — Generate opportunity hypotheses
 
 The Opportunity Engine evaluates predefined patterns and applies the configured scoring weights to relevant signals.
 
-Step 7 — Examine evidence and limitations
+### Step 7 — Examine evidence and limitations
 
 The evidence-intelligence components organize source records and generate counter-evidence findings for balanced review.
 
-Step 8 — Explore the results
+### Step 8 — Explore the results
 
 The frontend presents the research results, signals, opportunity candidates, source records, and supporting analysis in a unified workspace.
 
 ---
 
-System Architecture
+## Technical Architecture
 
 OptriX uses a React frontend and a Python FastAPI backend.
 
@@ -266,7 +263,7 @@ flowchart TD
 
     N --> B
 
-Architectural responsibilities
+### Architectural responsibilities
 
 Component| Responsibility
 React frontend| Research input, navigation, dashboards, and result visualization
@@ -285,7 +282,7 @@ The architecture separates data collection, analytical processing, and user-inte
 
 ---
 
-Market Signal Framework
+## Market Signals & Opportunity Scoring
 
 OptriX currently defines six market signal dimensions.
 
@@ -297,7 +294,7 @@ Technology| Research and technology-related activity
 Competition| Competitive activity and the presence of alternative providers
 Geographic gap| Potential regional differences in market activity and supplier discovery
 
-Opportunity scoring
+### Opportunity scoring
 
 The Opportunity Scorer uses configurable weights for different opportunity patterns.
 
@@ -316,9 +313,9 @@ Interpretation note: These scores are heuristic and depend on the available sear
 
 ---
 
-Technology Stack
+## Technology & Tools
 
-Frontend
+### Frontend
 
 Technology| Purpose
 React| Component-based user interface
@@ -327,7 +324,7 @@ JavaScript (ES modules)| Frontend application logic
 Lucide React| Interface icons
 CSS| Layout, styling, and responsive presentation
 
-Backend
+### Backend
 
 Technology| Purpose
 Python| Research orchestration and analysis
@@ -337,7 +334,7 @@ Requests| HTTP communication with SerpApi
 python-dotenv| Environment variable loading
 Pydantic| Request validation through FastAPI schemas
 
-Data and intelligence
+### Data and intelligence
 
 - SerpApi for structured search data retrieval
 - Custom source collectors for six Google search verticals
@@ -346,13 +343,13 @@ Data and intelligence
 - Entity resolution
 - Counter-evidence analysis
 
-Deployment
+## Live Deployment & Configuration
 
 The application has been deployed using Render. Deployment configuration, service availability, and environment variables should be verified against the current deployment settings.
 
 ---
 
-Project Structure
+## Codebase Structure
 
 The following is a simplified overview of the main application modules.
 
@@ -401,11 +398,11 @@ This diagram highlights the principal modules; it is not intended to enumerate e
 
 ---
 
-Getting Started
+## Local Setup & Installation
 
 Follow these steps to run OptriX locally.
 
-Prerequisites
+### Prerequisites
 
 Install the following:
 
@@ -505,7 +502,7 @@ Enter a market topic and location, then run a research query.
 
 ---
 
-Environment Configuration
+## Environment Setup
 
 Variable| Location| Required| Description
 "SERPAPI_API_KEY"| "backend/.env"| Yes for live collection| Authenticates requests to SerpApi
@@ -525,9 +522,9 @@ Keep credentials private. If a key is accidentally committed, revoke or rotate i
 
 ---
 
-API Reference
+## API Endpoints & Usage
 
-Health Check
+### Health Check
 
 "GET /health"
 
@@ -543,7 +540,7 @@ Expected response:
   "status": "ok"
 }
 
-Run Market Research
+### Run Market Research
 
 "POST /research"
 
@@ -600,7 +597,7 @@ The example above illustrates the response structure, not a guaranteed live resp
 
 ---
 
-Deployment
+## Live Deployment & Configuration
 
 OptriX has been deployed using Render, with separate frontend and backend services in the existing deployment setup.
 
@@ -609,7 +606,7 @@ Live application links:
 - "OptriX — Frontend deployment" (https://optrix-1.onrender.com/)
 - "OptriX — Additional deployment" (https://optrix-2.onrender.com)
 
-Deployment checklist
+### Deployment checklist
 
 Before deploying a new version:
 
@@ -621,4 +618,4 @@ Before deploying a new version:
 6. Test "GET /health".
 7. Run a real "POST /research" request.
 8. Verify that the frontend renders successful results and handles failed source requests.
-9. Check logs for API errors, missing conf
+9. Check logs for API errors, missing configuration, and failed source requests.
