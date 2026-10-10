@@ -552,3 +552,98 @@ a { color: inherit; }
   object-fit: cover;
   object-position: center;
 }
+
+
+/* OptriX — final readability polish */
+
+/* Improve general text readability */
+body {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Main content and descriptive text */
+.hero-copy,
+.form-heading p,
+.section-description,
+.panel-description,
+.opportunity-description,
+.detail-description,
+.evidence-description,
+.empty-state p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Card headings and section headings */
+.source-card strong,
+.pulse-card strong,
+.opportunity-card h3,
+.panel-heading h3,
+.entity-card h3 {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Supporting text, metadata and labels */
+.source-card small,
+.pulse-card small,
+.card-meta,
+.entity-meta,
+.evidence-meta,
+.replay-label {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Form labels and input text */
+.field > span {
+  font-size: 14px;
+}
+
+.field-input input,
+.field-input select,
+.field-input textarea {
+  font-size: 16px;
+}
+
+/* Buttons and navigation */
+button,
+.nav-item {
+  line-height: 1.5;
+}
+
+/* Keep content readable on mobile */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+
+  .hero-copy,
+  .form-heading p,
+  .section-description,
+  .panel-description,
+  .opportunity-description,
+  .detail-description,
+  .evidence-description {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .source-card strong,
+  .pulse-card strong,
+  .opportunity-card h3,
+  .panel-heading h3,
+  .entity-card h3 {
+    font-size: 16px;
+  }
+
+  .source-card small,
+  .pulse-card small,
+  .card-meta,
+  .entity-meta,
+  .evidence-meta,
+  .replay-label {
+    font-size: 14px;
+  }
+}
